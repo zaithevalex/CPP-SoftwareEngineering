@@ -1,0 +1,8 @@
+# ninja log v6
+462	553	1759099049778866331	tasks	9eb46b0b122e5f5d
+2	61	1759114276926547062	build.ninja	d3d8543c69b2b09a
+5	620	1759107527103275086	CMakeFiles/tasks.dir/02-03/main.cpp.o	5e07a4dcc797a25c
+4	526	1759098524582747110	CMakeFiles/tasks.dir/main.cpp.o	71fc8e9daef993f7
+5	169	1759107527103724464	CMakeFiles/tasks.dir/02-06/main.cpp.o	4aa208b75634bec5
+4	462	1759099049321205679	CMakeFiles/tasks.dir/02-02/main.cpp.o	65fafd95631e0a85
+3	354	1759107545767031184	CMakeFiles/tasks.dir/02-08/main.cpp.o	bf37eef8e9dbbfda
