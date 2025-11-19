@@ -2,8 +2,6 @@
 #include <span>
 #include <cmath>
 
-const size_t MAX_SIZE = 100;
-
 double getMax(std::span<double> arr);
 
 double getMin(std::span<double> arr);
@@ -13,6 +11,8 @@ double getAverage(std::span<double> arr);
 double getStandardDeviation(std::span<double> arr);
 
 int main() {
+    const size_t MAX_SIZE = 100;
+
     std::array<double, MAX_SIZE> arr{};
     std::string line;
     std::getline(std::cin, line);
@@ -47,7 +47,7 @@ int main() {
     std::cout << "Standard Deviation: " << getStandardDeviation(sp) << std::endl;
 }
 
-double getAverage(const std::span<double> arr) {
+double getAverage(std::span<const double> arr) {
     if (arr.size() == 0) {
         return 0;
     }
@@ -59,9 +59,7 @@ double getAverage(const std::span<double> arr) {
     return average / arr.size();
 }
 
-
-
-double getMax(const std::span<double> arr) {
+double getMax(std::span<const double> arr) {
     double max = arr.size() > 0 ? arr.front() : 0;
     for (auto num : arr) {
         if (num > max) {

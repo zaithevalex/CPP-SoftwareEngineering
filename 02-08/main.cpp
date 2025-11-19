@@ -2,12 +2,12 @@
 #include <iostream>
 #include <vector>
 
-const auto CACHE_SIZE = 10000;
-
 std::size_t len(unsigned long long int n, std::vector<std::size_t>& seq);
 bool compareByValue(const std::pair<int, int>& a, const std::pair<int, int>& b);
 
 int main() {
+    const auto CACHE_SIZE = 10000;
+
     std::vector<std::size_t> cache(CACHE_SIZE, 0);
     std::vector<std::pair<int, unsigned long long int>> pairs;
     for (unsigned long long int i = 1; i <= 100; ++i) {
