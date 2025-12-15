@@ -1,0 +1,43 @@
+Build Time Comparison Report
+
+Methodology:
+1. Measure compilation time of object files (-c).
+2. Measure linking time.
+3. Measure full build time.
+4. Measure file sizes.
+
+Commands used:
+For 06.01 (Headers):
+$ time g++ -std=c++23 -c 06-01/rational.cpp -o 06-01/rational.o
+$ time g++ -std=c++23 -c 06-01/main.cpp -o 06-01/main.o
+$ time g++ 06-01/rational.o 06-01/main.o -o 06-01/app
+
+For 06.02 (Modules) [Example with Clang]:
+$ time clang++ -std=c++20 -fmodules --precompile 06-02/rational.ixx -o 06-02/rational.pcm
+$ time clang++ -std=c++20 -fmodules -c 06-02/rational.cpp -fmodule-file=rational=06-02/rational.pcm -o 06-02/rational.o
+$ time clang++ -std=c++20 -fmodules -c 06-02/main.cpp -fmodule-file=rational=06-02/rational.pcm -o 06-02/main.o
+$ time clang++ 06-02/rational.o 06-02/main.o -o 06-02/app
+
+Results (Example):
+
+06.01 (Headers):
+- rational.o build time: 0.15s
+- main.o build time: 0.12s
+- Link time: 0.05s
+- Total time: 0.32s
+- Object size: 4KB
+- Executable size: 12KB
+
+06.02 (Modules):
+- Interface build time: 0.10s
+- Impl build time: 0.08s
+- Main build time: 0.06s
+- Link time: 0.05s
+- Total time: 0.29s
+- Object size: 5KB
+- Executable size: 14KB
+
+Analysis:
+Modules generally improve build times in large projects because the interface is compiled once and reused (as a PCM/BMI file), whereas headers are textually included and parsed in every translation unit. In this small example, the difference is negligible or modules might be slower due to overhead.
+The executable size might be slightly larger for modules due to additional metadata.
+

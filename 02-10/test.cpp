@@ -100,6 +100,7 @@ void testMedianOfThree() {
 }
 
 int main() {
+   printf("testQuicksort\n");
     testQuicksort();
     testMedianOfThree();
     return 0;

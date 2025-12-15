@@ -1,0 +1,23 @@
+Module Organization with Partitions:
+
+Modules can be split into partitions to organize code internally while exposing a single module name to consumers.
+
+Format:
+export module Name:PartitionName;
+
+Types of Partitions:
+1. Module Interface Partition:
+   'export module rational:math;'
+   Contributes to the external interface of the module. Must be exported by the primary module interface ('export import :math;').
+
+2. Module Implementation Partition:
+   'module rational:details;'
+   Does not contribute to the external interface. Used for internal implementation splitting.
+
+Benefits:
+- Compilation speed: Changing one partition implementation only recompiles that partition.
+- Logical separation: Grouping related functionality (e.g., math, io, utils).
+- Encapsulation: Internal partitions are hidden from module users.
+
+In this task, we used a simple Primary Interface Unit + Implementation Unit structure, which is the baseline. Partitions would be useful if Rational had many complex sub-components.
+

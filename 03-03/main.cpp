@@ -39,8 +39,8 @@ public:
     void push_front(int val) {
         Node* newNode = new Node(val);
         if (first == nullptr) {
-            first = newNode;
-            last = newNode;
+            first = last=  newNode;
+
         } else {
             newNode->next = first;
             first = newNode;
